@@ -8,4 +8,4 @@
 ## Topics
 
 - [AI Basics](notes/01-ai-for-everyone.md)
-- [GenAI Basics](notes/01-generative-ai-for-everyone.md)
+- [Generative AI Basics](notes/01-generative-ai-for-everyone.md)
