@@ -3,6 +3,7 @@
 **Definition:** A neural network trained to predict the next token in an input sequence.
 
 **Example:**
+
 - Input: "All that glitters"
 - LLM predicts: "is"
 - Then predicts: "not"
@@ -21,6 +22,7 @@
 Input: "All that glitters"
 
 Breaks down into:
+
 - Token 1: "all"
 - Token 2: " " (space character)
 - Token 3: "that"
@@ -29,6 +31,7 @@ Breaks down into:
 
 **Why not just split by spaces?**
 Humans use language with patterns and meaning. Consider these suffixes:
+
 - **"-ers"** suffix: glimmers, murmurs, flickers (indicates the action is being performed by an object)
 - **"-ing"** suffix: eating, dancing, singing (indicates an action is being performed)
 
@@ -41,12 +44,14 @@ By recognizing these tokens, the LLM can better understand the structure and mea
 **Definition:** A coordinate representation of a word in an n-dimensional space where similar meanings are placed close together.
 
 **How it works:**
+
 - Words with similar meanings are clustered together in vector space
 - Words with opposite meanings are placed far apart
 - Each word's meaning is converted into coordinates in this multi-dimensional space
 
 **Example:**
 If you map words in a 2D space (imagine it's actually n-dimensional):
+
 - "happy," "joyful," "cheerful" would be close together
 - "sad," "unhappy," "depressed" would be close together but far from the happy cluster
 - "apple" (fruit) would be near "banana," "orange"
@@ -65,11 +70,13 @@ If you map words in a 2D space (imagine it's actually n-dimensional):
 **Example with "Apple":**
 
 1. **"It is a tasty apple"**
+
    - Context word: "tasty"
    - Meaning: fruit (the edible apple)
    - Vector pushed toward: banana, orange, guava
 
 2. **"Apple's revenue"**
+
    - Context word: "revenue"
    - Meaning: the company
    - Vector pushed toward: Google, Meta, Microsoft
@@ -80,6 +87,7 @@ If you map words in a 2D space (imagine it's actually n-dimensional):
    - Vector pushed toward: affection, love-related concepts
 
 **How it works:**
+
 - Take the vector of the ambiguous word (e.g., "apple")
 - Take the vector of nearby contextual words (e.g., "revenue" or "tasty")
 - Perform the attention operation (not simple addition, but a specific mathematical operation)
@@ -94,11 +102,13 @@ If you map words in a 2D space (imagine it's actually n-dimensional):
 **Definition:** A training method where the structure of the input data itself tells the model what it should learn, without human labeling.
 
 **Traditional supervised learning:**
+
 - Humans provide: "If input is 'all that glitters', output should be 'is not gold'"
 - Requires manual labeling for every example
 - Expensive and time-consuming
 
 **Self-supervised learning:**
+
 - Take existing text: "Et tu, Brutus"
 - Create three automatic training tasks:
   1. What comes after "Et"? → Answer: "tu"
@@ -106,16 +116,19 @@ If you map words in a 2D space (imagine it's actually n-dimensional):
   3. What comes after "Et tu Brutus"? → Answer: "," or "." or stop token
 
 **Visual Example from Video:**
-- Sequence: 5, 4, 3, 2, ___
+
+- Sequence: 5, 4, 3, 2, \_\_\_
 - Your mind predicts: 1
 - No one needed to tell you the answer; the pattern itself taught you
 
 **Another Example:**
+
 - Show an image with one part blanked out
 - Your mind fills in the missing part based on context
 - The model learns the same way
 
 **Why it's revolutionary:**
+
 - No human intervention needed to create training data
 - Can use any text that exists on the internet
 - Makes training highly scalable and much cheaper
@@ -128,6 +141,7 @@ If you map words in a 2D space (imagine it's actually n-dimensional):
 **Definition:** A specific architecture/algorithm for predicting the next token in a sequence.
 
 **Important distinction:**
+
 - **Large Language Model (LLM):** The product/goal - something that predicts the next token
 - **Transformer:** The engine/method - a specific way to achieve that goal
 - Analogy: LLM is the car, Transformer is the engine
@@ -153,10 +167,12 @@ Output Prediction
 **Example of layered understanding:**
 
 **First attention layer:**
+
 - Input: "A crane was hunting a crab"
 - Understanding: "crane" = bird (not metal machine)
 
 **Second attention layer:**
+
 - Inference: The crab is fearful
 - Inference: The crane is hungry
 - Understanding: More complex relationships beyond just word disambiguation
@@ -172,20 +188,24 @@ Output Prediction
 **Process:**
 
 **Step 1: Train Base Model**
+
 - Use self-supervised learning on general text
 - Model learns language structure and patterns
 
 **Step 2: Fine-Tune with Q&A**
+
 - Provide domain-specific questions and expected answers
 - Penalize undesirable responses
 - Reward desirable responses
 
 **Example - Medical LLM:**
+
 - Base model trained on general text
 - Fine-tuned with medical questions and answers
 - Result: Model learns to think and respond using medical terminology
 
 **Example - Financial LLM:**
+
 - Same base model
 - Fine-tuned with financial questions and answers
 - Result: Model learns to think and respond using financial terminology
@@ -195,10 +215,12 @@ Output Prediction
 Question: "Who is the president of USA?"
 
 ❌ **Undesirable responses (penalized):**
+
 - "I would like to know that too"
 - "No" (not helpful)
 
 ✅ **Desirable responses (rewarded):**
+
 - "Donald Trump"
 - "I don't have that information" (honest)
 
@@ -213,11 +235,13 @@ Question: "Who is the president of USA?"
 **How it works:**
 
 Instead of sending:
+
 ```
 User query: "Where is my parcel?"
 ```
 
 You send:
+
 ```
 Examples:
 Q: "Where is my order?"
@@ -230,6 +254,7 @@ User query: "Where is my parcel?"
 ```
 
 **Key characteristics:**
+
 - Happens during inference time (production/runtime)
 - Examples are added in real-time by your server
 - Also called "example prompting" or "examples in prompt"
@@ -261,6 +286,7 @@ LLM generates high-quality, context-aware response
 ```
 
 **Example scenario:**
+
 - User asks: "What's your refund policy?"
 - Server retrieves: Company refund policy document
 - Server retrieves: Examples of refund-related responses
@@ -269,6 +295,7 @@ LLM generates high-quality, context-aware response
 
 **Where are documents stored?**
 Multiple options exist:
+
 - Vector database (most common - easier similarity search)
 - Graph database (e.g., Neo4j)
 - In-memory cache
@@ -287,6 +314,7 @@ Multiple options exist:
 **How it works:**
 
 **Step 1: Store documents as vectors**
+
 - Documents are converted to vector representations
 - Stored in n-dimensional space
 - Similar documents are close together in this space
@@ -295,11 +323,13 @@ Multiple options exist:
 Example query: "I am upset with your payment system. I expect a refund."
 
 **Step 3: Find similar documents**
+
 - Convert query to vector
 - Search for documents with smallest distance to query vector
 - Key terms in query: "upset," "refund," "payment system"
 
 **Semantic matching example:**
+
 - Your company policy might not use the word "upset"
 - But you have documents about "low rating" or "customer drop-off"
 - Vector database understands these are semantically similar
@@ -348,6 +378,7 @@ Result sent back to user
 ```
 
 **Example scenario:**
+
 - User: "Book me a flight to Delhi tomorrow"
 - LLM needs real-time flight information
 - MCP Client queries multiple airline servers
@@ -375,31 +406,37 @@ Result sent back to user
 5. **Context summarization** - Managing conversation history
 
 **Key difference from Prompt Engineering:**
+
 - **Prompt engineering:** Stateless, single prompt optimization
 - **Context engineering:** Stateful, evolves with user preferences and chat history
 
 **Context summarization techniques:**
 
 **1. Sliding window approach:**
+
 ```
 Last 100 chats → Sent directly to LLM
 All previous chats → Summarized into 5 sentences
 ```
 
 **2. Keyword focus:**
+
 - Extract only important keywords from history
 - Send keywords + current query
 
 **3. Recent + summary:**
+
 - Last chat sent in full
 - All previous history summarized
 
 **4. Smart preprocessing:**
+
 - Use a cheap/small LLM to summarize documents
 - Send summarized version to expensive LLM
 - Reduces cost while maintaining context
 
 **Two new challenges:**
+
 1. **User preferences:** How to store and apply long-term user preferences
 2. **Prompt/Context summarization:** How to compress long conversation history effectively
 
@@ -424,17 +461,20 @@ Agent capabilities:
 **Example: Travel Agent**
 
 **Capabilities:**
+
 - Book flights
 - Book hotels
 - Manage email when you're away
 - Monitor prices
 
 **Autonomous behavior:**
+
 - Watches for cheap flight windows
 - Makes bookings according to your preferences automatically
 - No constant user input needed
 
 **Key characteristics:**
+
 - Long-running (not just one-time responses)
 - Autonomous decision-making
 - Can combine multiple tools and services
@@ -451,6 +491,7 @@ Agent capabilities:
 **How it works:**
 
 **Step 1: Model generates multiple responses**
+
 ```
 User query → LLM generates:
 - Response 1
@@ -458,6 +499,7 @@ User query → LLM generates:
 ```
 
 **Step 2: Human chooses better response**
+
 - Human selects Response 1 as better
 - Response 1 gets score: +1
 - Response 2 gets score: -1
@@ -474,11 +516,13 @@ Path to Response 2: +1, +1, +1, -1, -1, -1 (negative region)
 ```
 
 After many iterations:
+
 - **Positive regions:** Model wants to go here (good responses)
 - **Negative regions:** Model avoids these paths (bad responses)
 - **Neutral regions:** Score of 0 (mixed feedback)
 
 **Analogy: Hill climbing**
+
 - Model tries to find the highest points (most positive feedback)
 - Avoids valleys (negative feedback)
 - Optimizes the path from query to response
@@ -486,6 +530,7 @@ After many iterations:
 **Goal:** Train the model to produce responses that make end users happy.
 
 **Famous example: Pavlov's Dog**
+
 - Bell rings → Dog gets food
 - After repetition: Bell rings → Dog salivates (even without food)
 - Behavior has been reinforced
@@ -495,11 +540,13 @@ After many iterations:
 Reinforcement learning observes patterns but doesn't build true understanding.
 
 **Coin flip example:**
+
 - Fair coin flipped: Heads, Heads, Heads, Heads, Heads, Heads
 - **RL model thinks:** "Heads is more likely next" (based on observation)
 - **Human thinks:** "Still 50/50 chance" (based on understanding of fair coin physics)
 
 **Key difference:**
+
 - RL: Learns from outcomes, finds beneficial paths
 - Humans: Build mental models of how things actually work
 - Humans are not crocodiles - we have deeper understanding beyond pattern recognition
@@ -515,12 +562,14 @@ Reinforcement learning observes patterns but doesn't build true understanding.
 **How it works:**
 
 **Traditional approach:**
+
 ```
 Question: Complex math problem
 Answer: 42
 ```
 
 **Chain of Thought approach:**
+
 ```
 Question: Complex math problem
 
@@ -532,6 +581,7 @@ Answer: 42
 ```
 
 **Training process:**
+
 - Show the model examples with step-by-step breakdowns
 - Model learns to reason through problems systematically
 - Model can apply this reasoning to new problems with different parameters
@@ -543,11 +593,13 @@ Answer: 42
 3. **Transparency:** Users can see how the model arrived at its answer
 
 **Advanced behavior (seen in models like DeepSeek):**
+
 - **Easy problems:** Fewer reasoning steps
 - **Hard problems:** More reasoning steps
 - Model automatically adjusts based on complexity
 
 **Related concepts:**
+
 - **Tree of Thought:** Explores multiple reasoning branches
 - **Graph of Thought:** More complex reasoning structures
 - Can also use external tools to enhance reasoning
@@ -556,6 +608,7 @@ Answer: 42
 Models specifically designed to reason through problems, also called "o-LMs" or "reasoning models."
 
 **Examples:**
+
 - OpenAI's O1, O3
 - DeepSeek reasoning models
 
@@ -570,22 +623,26 @@ Models specifically designed to reason through problems, also called "o-LMs" or 
 **Capabilities:**
 
 **Image understanding:**
+
 - Analyze images
 - Count objects ("How many apples are in this image?")
 - Describe scenes
 - Recognize patterns
 
 **Image generation:**
+
 - Create new images from text descriptions
 - Modify existing images
 - Generate variations
 
 **Video understanding:**
+
 - Analyze video content
 - Track movements
 - Understand temporal relationships
 
 **Video generation:**
+
 - Create videos from text descriptions
 - Modify existing videos
 - Generate realistic motion
@@ -593,10 +650,12 @@ Models specifically designed to reason through problems, also called "o-LMs" or 
 **Why "multimodal" is important:**
 
 **Current impact:**
+
 - Text LLMs have transformed marketing and content creation
 - Social media is now full of LLM-generated content
 
 **Future impact:**
+
 - Better image generation will transform visual content
 - Video generation could be revolutionary
   - Example: Celebrities creating ads through LLMs
@@ -607,6 +666,7 @@ Models specifically designed to reason through problems, also called "o-LMs" or 
 Training on multiple modalities (text + images) actually improves performance compared to text-only training.
 
 **Why?**
+
 - Models develop deeper understanding of object meanings
 - Example: Training on both the word "cat" and images of cats
 - Result: Better understanding of what "cat" means
@@ -628,6 +688,7 @@ Training on multiple modalities (text + images) actually improves performance co
 4. **Task-specific:** Optimized for specific company needs
 
 **Parameter comparison:**
+
 ```
 Small Language Model (SLM):
 - 3 million to 300 million parameters
@@ -643,28 +704,33 @@ Large Language Model (LLM):
 **Trade-offs:**
 
 **What SLMs can do well:**
+
 - Excel at specific, focused tasks
 - Example: Customer service bot trained only on sales and customer queries
 - Deep expertise in their trained domain
 
 **What SLMs cannot do well:**
+
 - Limited general knowledge
 - Example: Sales bot probably can't do detailed weather analysis
 
 **Use cases:**
 
 **Company-specific bot:**
+
 - Trained on internal company data
 - Handles customer queries
 - Makes sales
 - Provides support
 
 **NASA example:**
+
 - Would build a model for weather prediction
 - Not focused on sales or customer service
 - Task-specific expertise
 
 **Training approach:**
+
 - Trained on less data (company-specific or task-specific)
 - Focused expertise rather than broad knowledge
 - Proprietary data stays internal
@@ -694,10 +760,12 @@ Input Query
 **Step-by-step:**
 
 1. **Send same input to both models**
+
    - Teacher (LLM): Large, complex, many parameters
    - Student (SLM): Small, fewer parameters (3-300 million)
 
 2. **Compare outputs**
+
    - If outputs match → Student is doing well, no weight changes needed
    - If outputs don't match → Student's internal weights are adjusted
 
@@ -731,14 +799,17 @@ Condense the complex neural network's knowledge into the most reasonable represe
 **How it works:**
 
 **Before quantization:**
+
 - Each weight in the neural network is a 32-bit number
 - High precision but uses more memory
 
 **After quantization:**
+
 - Each weight is reduced to an 8-bit number
 - Lower precision but much more memory efficient
 
 **Memory savings calculation:**
+
 ```
 32-bit → 8-bit = 75% memory reduction
 ```
@@ -746,15 +817,18 @@ Condense the complex neural network's knowledge into the most reasonable represe
 **Important clarifications:**
 
 **What gets quantized:**
+
 - Primarily the feedforward neural network weights
 - Attention mechanism typically remains unchanged
 
 **What doesn't reduce:**
+
 - Training cost stays the same
 - You still train with full precision first
 - Quantization is applied after training is complete
 
 **Primary benefit:**
+
 - **Reduces inference cost** (production runtime)
 - **Does not reduce training cost**
 
@@ -771,6 +845,7 @@ Step 4: Deploy quantized model for production
 ```
 
 **Why it works:**
+
 - Once a model is fully trained, it doesn't need ultra-high precision
 - 8-bit precision is usually sufficient for making good predictions
 - Minimal accuracy loss for significant efficiency gains
@@ -793,6 +868,7 @@ Step 4: Deploy quantized model for production
 **Relationship to Small Language Models:**
 
 Foundation models are often the base for creating SLMs:
+
 ```
 Foundation Model (base)
     ↓
@@ -804,11 +880,13 @@ Company-specific SLM
 **Examples of specialized foundation models:**
 
 **Sales-focused model:**
+
 - Trained on: Customer queries, sales techniques, product information
 - Expert at: Making sales, handling customer queries
 - Not good at: Weather analysis, scientific research
 
 **NASA weather model:**
+
 - Trained on: Weather data, atmospheric science, climate patterns
 - Expert at: Weather prediction, climate analysis
 - Not needed: Sales capabilities
@@ -821,6 +899,7 @@ Company-specific SLM
 4. **Practical limitations:** Won't excel at tasks outside training domain
 
 **The trade-off:**
+
 ```
 Large General Model:
 - Knows everything reasonably well
@@ -848,9 +927,8 @@ These 20 concepts form the foundation of modern AI engineering:
 **Model Types:** Multimodal models, SLMs, foundation models
 
 Understanding these terms will help you:
+
 - Communicate effectively with AI engineers and teams
 - Learn deeper AI subjects more easily
 - Recognize hype from substance in the AI space
 - Make informed decisions about AI implementations
-
-The field is evolving rapidly, but these fundamental concepts provide a solid foundation for understanding current and future developments in AI.
