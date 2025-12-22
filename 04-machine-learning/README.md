@@ -11,5 +11,5 @@ Machine Learning: "Here are 1,000 examples. Figure out the pattern yourself."
 
 ## Machine Learning Algorithms
 
-- Supervised Learning
-- Unsupervised Learning
+- [Supervised Learning](./01-intro/01-supervised-learning.md)
+- [Unsupervised Learning](./01-intro/02-unsupervised-learning.md)
