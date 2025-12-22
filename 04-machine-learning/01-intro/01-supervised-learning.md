@@ -37,7 +37,7 @@ In supervised learning, you're the teacher providing the "correct answers" durin
 
 Predicting a specific number or continuous value.
 
-Real-World Examples:
+**Real-World Examples:**
 
 1. House Price Prediction
 
@@ -89,7 +89,7 @@ The Answer is Always:
 
 Putting things into buckets/groups/categories.
 
-Real-World Examples:
+**Real-World Examples:**
 
 1. Email: Spam or Not Spam?
 
