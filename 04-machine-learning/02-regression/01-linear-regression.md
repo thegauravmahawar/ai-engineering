@@ -92,3 +92,45 @@ Price = 200 × 2,500 + 20,000
 Price = 500,000 + 20,000
 Price = $520,000
 ```
+
+## How does it find the best line?
+
+For each training example:
+
+- Use the line to predict the price
+- Compare prediction to actual price
+- Calculate the error (difference)
+- Square the error (to make negatives positive)
+- Add up all squared errors
+
+The algorithm adjusts the line to minimize total error. This is called **"minimizing the cost function"** or **"least squares method"**.
+
+## Visual Example
+
+**Start:** Algorithm makes a random guess for the line
+
+```text
+Price = 50 × Size + 100,000  (random starting line)
+```
+
+**Test it on first house (800 sq ft, actual price $180k):**
+
+- Predicted: 50 × 800 + 100,000 = $140,000
+- Actual: $180,000
+- Error: $40,000 too low!
+
+**Test it on all houses - errors are huge!**
+
+**Adjustment:** Algorithm says "my line is too flat, need steeper slope!"
+
+```text
+Price = 150 × Size + 50,000  (adjusted)
+```
+
+**Test again - still errors, but smaller**
+
+**Keep adjusting until errors are minimized:**
+
+```text
+Price = 200 × Size + 20,000  (final best line)
+```
