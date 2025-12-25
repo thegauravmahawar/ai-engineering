@@ -134,3 +134,52 @@ Price = 150 × Size + 50,000  (adjusted)
 ```text
 Price = 200 × Size + 20,000  (final best line)
 ```
+
+## Understanding the numbers
+
+Let's say we get this result:
+
+```text
+Price = 200 × Size + 20,000
+```
+
+**What does w = 200 mean?**
+
+"For every 1 square foot increase in size, price goes up by $200"
+
+Example:
+
+- 1,000 sq ft house: $220,000
+- 1,001 sq ft house: $220,200 (exactly $200 more!)
+
+**What does b = 20,000 mean?**
+
+"If a house had 0 square feet (theoretical), it would cost $20,000"
+
+This represents fixed costs: land value, permits, foundation, etc.
+
+## Common mistakes & misconceptions
+
+**Mistake 1: Extrapolating Too Far**
+
+```text
+Our house model: Price = 200 × Size + 20,000
+```
+
+**Bad prediction:** A 10,000 sq ft house?
+
+```text
+Price = 200 × 10,000 + 20,000 = $2,020,000
+```
+
+Might be wrong! The relationship might not hold for mansions (luxury premium kicks in).
+
+**Lesson:** Only predict within the range of your training data.
+
+**Mistake 2: Assuming Causation**
+
+Just because ice cream sales and temperature are correlated doesn't mean temperature causes sales (though it does influence them).
+
+**Mistake 3: Forcing a Line**
+
+Not all relationships are linear! Sometimes you need curves (polynomial regression) or other models.
