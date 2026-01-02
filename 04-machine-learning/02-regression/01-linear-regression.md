@@ -183,3 +183,14 @@ Just because ice cream sales and temperature are correlated doesn't mean tempera
 **Mistake 3: Forcing a Line**
 
 Not all relationships are linear! Sometimes you need curves (polynomial regression) or other models.
+
+## Summary
+
+Linear Regression with One Variable:
+
+- Input: One feature (x) - like house size
+- Output: One prediction (y) - like price
+- Method: Find the best straight line
+- Equation: y = wx + b
+- Learning: Algorithm adjusts w and b to minimize errors
+- Result: Can predict y for any new x value
